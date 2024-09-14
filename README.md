@@ -11,7 +11,7 @@ Three.js: JavaScript library for rendering 3D graphics in the browser.
 GSAP: Library for animations and transitions in JavaScript.
 HTML/CSS: For structuring and styling the web page.
 
-CC Attribution - Free 3D MODEL:
+## CC Attribution - Free 3D MODEL:
 
 https://creativecommons.org/licenses/by/4.0/
 
