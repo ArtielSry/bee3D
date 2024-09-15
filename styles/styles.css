@@ -319,6 +319,80 @@ button {
   color: var(--color-primary);
 }
 
+/* Splash */
+
+.splash-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-primary);
+  z-index: 20;
+  opacity: 1;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.splash-logo img {
+  width: 150px;
+  height: auto;
+  animation: logo-fade-in 2s ease forwards;
+}
+
+@keyframes logo-fade-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.splash-container.fade-out {
+  opacity: 0;
+  transform: translateY(20);
+  pointer-events: none;
+}
+
+
+/* SVG Circle Loader */
+.circular-loader {
+  width: 250px;
+  height: 250px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.circle-bg {
+  fill: none;
+  stroke: #f3f3f3;
+  stroke-width: 1;
+}
+
+.circle {
+  fill: none;
+  stroke: #323402; /* Color de relleno (verde oscuro) */
+  stroke-width: 1;
+  stroke-linecap: round;
+  animation: progress 3s ease-out forwards;
+}
+
+@keyframes progress {
+  0% {
+    stroke-dasharray: 0, 100;
+  }
+  100% {
+    stroke-dasharray: 100, 0;
+  }
+}
+
 /* RESPONSIVE */
 @media (max-width: 430px) {
   .nav-ul {

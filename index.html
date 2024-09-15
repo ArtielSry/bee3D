@@ -26,6 +26,30 @@
     <title>Save the bees - Personal Project</title>
   </head>
   <body>
+    <!-- Splash Intro -->
+    <div class="splash-container">
+      <div class="splash-logo">
+        <img src="./assets/logo.svg" alt="All About Wasps Logo" />
+      </div>
+      <svg class="circular-loader" viewBox="0 0 36 36">
+        <path
+          class="circle-bg"
+          d="M18 2.0845
+      a 15.9155 15.9155 0 0 1 0 31.831
+      a 15.9155 15.9155 0 0 1 0 -31.831"
+        />
+        <path
+          class="circle"
+          stroke-dasharray="0, 100"
+          d="M18 2.0845
+      a 15.9155 15.9155 0 0 1 0 31.831
+      a 15.9155 15.9155 0 0 1 0 -31.831"
+        />
+      </svg>
+
+      <div class="bg"></div>
+    </div>
+
     <!-- Header -->
     <header id="section1" class="block">
       <nav class="nav" id="navbar">
@@ -181,6 +205,7 @@
     <script src="https://cdn.jsdelivr.net/npm/three@0.140.0/examples/js/loaders/GLTFLoader.js"></script>
 
     <script src="./javascript/navbar-scroll.js"></script>
+    <script src="./javascript/splash-intro.js"></script>
 
     <script>
       // Function to load script (desktop or responsive)

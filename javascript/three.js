@@ -118,9 +118,9 @@ loader.load(
         gsap.to(model.scale, { x: 0.3, y: 0.3, z: 0.3, duration: 0.3 });
       },
       () => {
-        gsap.to(model.position, { x: 0, y: -4, z: 0, duration: 0.3 });
+        gsap.to(model.position, { x: 0, y: -7, z: 0, duration: 0.3 });
         gsap.to(model.rotation, { y: 0, duration: 0.3 });
-        gsap.to(model.scale, { x: 0.25, y: 0.25, z: 0.25, duration: 0.3 });
+        gsap.to(model.scale, { x: 0.3, y: 0.3, z: 0.3, duration: 0.3 });
       },
     ];
 
@@ -152,56 +152,55 @@ loader.load(
     // 3D model following mouse
     const followSpeed = 0.02; // Reducir la velocidad para que siga más despacio
 
-    // Posición objetivo que se actualizará cuando el ratón se mueva
+    // Target position that will be updated when the mouse moves
     let targetPosition = new THREE.Vector3();
 
-    // Función para actualizar la posición del cursor
+    // Function to update the cursor position
     function onMouseMove(event) {
       if (currentSection === 5 && model) {
-        // Convertir las coordenadas del cursor a coordenadas de la cámara
+        // Convert the cursor coordinates to camera coordinates
         const mouseX = (event.clientX / window.innerWidth) * 2 - 1;
         const mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
 
-        // Crear un vector de la posición del cursor en el espacio de la cámara
+        // Create a vector from the cursor position in the camera space
         const vector = new THREE.Vector3(mouseX, mouseY, 0.5);
         vector.unproject(camera);
 
-        // Calcular la dirección del cursor
+        // Calculate the direction of the cursor
         const dir = vector.sub(camera.position).normalize();
 
-        // Definir la distancia del modelo desde la cámara
-        const distance = 20;
+        // Define the distance of the model from the camera
+        const distance = 12;
 
-        // Calcular la nueva posición objetivo del modelo
+        // Calculate the new target position for the model
         targetPosition = camera.position
           .clone()
           .add(dir.multiplyScalar(distance));
       }
     }
 
-    // Añadir listener para actualizar la posición objetivo cuando el ratón se mueva
+    // Listener to update the new position of cursor
     window.addEventListener("mousemove", onMouseMove);
 
-    // Función de animación que mueve el modelo hacia la posición objetivo constantemente
     function animate() {
       requestAnimationFrame(animate);
 
-      if (mixer) mixer.update(0.01); // Actualizar las animaciones del modelo
+      if (mixer) mixer.update(0.01); // Updates animations
 
       if (model && currentSection === 5) {
-        // Mover el modelo hacia la posición objetivo almacenada
+        //  Move the 3D model
         model.position.lerp(targetPosition, followSpeed);
 
-        // Verificar si el modelo está muy cerca de la posición objetivo
+        // Verify if the 3D model is close to cursor
         if (model.position.distanceTo(targetPosition) < 0.01) {
-          model.position.copy(targetPosition); // Asegurar que llegue completamente
+          model.position.copy(targetPosition);
         }
       }
 
-      renderer.render(scene, camera); // Renderizar la escena
+      renderer.render(scene, camera); // Render scene
     }
 
-    // Iniciar la animación
+    // Start animation
     animate();
   },
   undefined,
